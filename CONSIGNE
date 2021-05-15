@@ -1,0 +1,34 @@
+Projet 1 :Développer un Système de Gestion de Citoyens
+Le logiciel doit permettre à une mairie de réaliser la gestion de ses citoyens. Une personne est caractérisée par son N° d'identifiant unique, son nom, son prénom, sa
+date de naissance, son sexe, son état civil (mariée, divorcée, célibataire ou veuve), et le N° d'identifiant de son conjoint (si elle est mariée).
+
+Objectifs : Créer un menu permettant de choisir parmi les fonctions suivantes :
+Mariage d’une personne, divorce d’une personne, connaissance de l’état d’une personne, affichage de la liste de toutes les personnes. Cela se résume par le
+développement de fonctions de mariage, de divorce, de recherche et d’affichage ainsi que le bon déroulement de chacune de ses fonctions.
+
+Le programme principal offre un menu à l’écran qui perme de :
+1. Mariage
+2. Divorce
+3. Naissance
+4. État d'une personne
+5. Affichage de la liste des personnes
+6. Saisie des personnes
+7. Quitter le programme
+
+Lors du choix 1, la fonction demande le n° d’identification des personnes à marier. Si une des personnes est déjà mariée, le programme indique qu'elle est déjà mariée, sinon les personnes
+sont marquées comme étant mariées.
+
+Lors du choix 2, la fonction demande le n° d’identification de la personne à divorcer. Si la personne n’existe pas, le programme signale l’erreur ; si la personne n’était pas mariée, le
+programme le stipule sinon la personne est marquée comme étant divorcée.
+
+Lors du choix 3, la fonction demande le n° d’identification des parents et rajoute un nouveau née.
+
+Lors du choix 4, la fonction demande le N° d’identification de la personne dont on désire connaître l’état. Si la personne n’existe pas dans la liste de la mairie une erreur est signalée,
+sinon son nom, son prénom, son sexe, sa date de naissance et le nom et prénom de son conjoint éventuel sont affichés.
+
+Lors du choix 5, la fonction affiche une liste de l’ensemble des personnes enregistrées à la mairie indiquant : leurs noms, prénoms, sexes, dates de naissance et le nom et prénom du
+conjoint éventuel.
+
+Lors du choix 6, permet de saisir une personne
+
+Lors du choix 7, la fonction permet de quitter le programme et sauvegarder les données
