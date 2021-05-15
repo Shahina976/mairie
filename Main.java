@@ -17,69 +17,71 @@ public class Main {
 	  Personne z=new Personne ("yooo", "yooo","yooo","Paris",2323,"F",new Date("12/12/2222"));
 	  Personne a =new Personne("tata","toto","toto","ici",11,"M",new Date("01/05/2000"));
 	  Personne b =new Personne ("polo","polo","pp","paname",12,"M",new Date("11/11/2011"));
-	   registre.ajouterPersonne("momo","momo","mm","Paris","f",new Date("12/12/2012") );
+	   registre.ajouterPersonne("momo","momo","mm","Paris","f",new Date("12/12/2000") );
 	   registre.ajouterPersonne("Mario joy", "Mario joy","Samantha","Paris","F",new Date("31/08/2000"));
-	   registre.ajouterPersonne("sam", "sam","Sam","Paname","F",new Date("11/12/1212"));
-
+	   registre.ajouterPersonne("sam", "sam","Sam","Paname","F",new Date("11/12/2017"));
+	   mariage.setMariage( x,y,new Date("12/12/1111"));
+	   /////////////////// MENU /////////////////////
+	   boolean redo = true;
+	   while (redo == true){
+	   affichageMenu();
+	   System.out.print("Choix : ");
+	   int choix=clav.nextInt();
+	   while ((choix<1) || (choix>7)) {	
+			System.out.print("Choix incorrect. Choisissez à nouveau : ");
+			choix = clav.nextInt();
+		}
 	   
-	 //  Mariage(x,y);
-    
-	//   afficherActeDeNaissance(x);
-  // Divorcer(x,y,new Date("12/12/1212"));
-  // afficherActeDeNaissance(x);
-	 // Mariage(a,z);
-	
-	// afficherActeDeNaissance(x);
-	// Divorcer(x,y,new Date("12/12/1212"));
-	// afficherActeDeNaissance(x);
-	//declarerDeces(x,new Date("12/11/1122"));
-	//declarerDeces(b,new Date("12/11/1122"));
-	//declarerDeces(z,new Date("12/11/1122"));
-	//System.out.println(deces.listDeces);
-	  // registre.trouverPersonne(0);
-	  // registre.trouverPersonne(1);
-	  // registre.trouverPersonne(3);
-	  //System.out.println( x.getIdentifiant());
-	  // x.affichage();
-	  // a.affichage();
-	  // z.affichage();
-	// SaisirNouvellePersonne();
-	   
-	//  System.out.println(mariage.listMariage);
-	  // Mariage(z,y);
-	  
-	  // System.out.println(mariage.listMariage);
-	   
-	  // System.out.println(x.mariage);
-	  
-		//System.out.println(x.mariage);
-		//System.out.println(y.mariage);
-		//System.out.println(z.mariage);
-		//System.out.println(mariage.listMariage);
-	   
-	  // 	 System.out.println(p);
+		if(choix==1) {
+			Mariage();
+		}
+		if(choix==2) {
+			Divorcer();
+		}
+		if (choix==3) {
+			declarerDeces();
+		}
+		
+		if (choix==4) {
+			afficherActeDeNaissance();
+		}
+		
+		if (choix==5) {
+			registre.affichage();
+		}
+		
+		if(choix==6) {
+			SaisirNouvellePersonne();
+		}
+		
 
-
-   //	System.out.println(registre.listPersonne);
-
+		if (choix==7) {						
+			System.out.println("Vous allez quitter le programme. \n Confirmer ? (1 : oui/2 : non)");
+			int confirmation = clav.nextInt();		
+			if(confirmation==1) {
+				redo=false;							
+				System.out.println("Au revoir !");
+			}else {
+					System.out.println("Retour au menu.");
+				}}}
+			
 	   
 	}
-
-
-//public static Personne trouverPersonne(ArrayList<Personne> listPersonne) {	 
-	//System.out.println("Entrez l'identifiant du citoyen : ");
-	//Scanner clav = new Scanner(System.in);
-	//int id1 = clav.nextInt();
-		//for (int j = 0;j<listPersonne.size(); j++) { 
-			//if (id1 ==listPersonne.get(j).numeroId) {
-				//Personne x = listPersonne.get(j);		
-				//return x;	
-		//	} 
-	//	}
 	
-	//return null;		
-//}
 
+	public static void affichageMenu() {	
+		System.out.println("********************* BIENVENUE ***********************");
+		System.out.println("*************** Gestion Citoyen Mairie *****************");
+		System.out.println("\n Veuillez choisir une option du menu :");
+		System.out.println("1 : Mariage");
+		System.out.println("2 : Divorce");
+		System.out.println("3 : Décès");
+		System.out.println("4 : Affichage de l'acte de Naissance");
+		System.out.println("5 : Affichage de la liste des citoyens");
+		System.out.println("6 : Saisie d'une nouveau citoyen");
+		System.out.println("7 : Quitter le programme");
+	}
+	
 
 
 
@@ -111,6 +113,13 @@ public static void SaisirNouvellePersonne() {
 		    if (s!=null) {
 				registre.listPersonne.add(s);
 	 }		
+	   }else {
+		   Personne x = registre.trouverPersonne(registre.listPersonne);
+		   if (x==null) {
+				System.out.println("Vérifiez l' identifiant du citoyen ");
+				}else {
+					x.affichage();
+				}
 	   }
 }
 
@@ -121,22 +130,34 @@ public static Personne choixNom(Personne x, Personne y) {
 	System.out.println("2 : "+y.nom);
 	int choix = clav.nextInt();							
 	if(choix == 1) {
-		System.out.println(x.nom);
+		System.out.println("Vous avez choisi :"+x.nom);
 		return x;										
 	} 
-	System.out.println(y.nom);
+	System.out.println("Vous avez choisi :"+y.nom);
 	return y;
 	
 }
 
-public static void Mariage(Personne x,Personne y){
+public static void Mariage(){
+	Personne x = registre.trouverPersonne(registre.listPersonne);
+	Personne y = registre.trouverPersonne(registre.listPersonne);
 
-	
+if (x==null) {
+	System.out.println("Vérifiez l' identifiant du citoyen 1 ");
+}else if(y==null) {
+	System.out.println("Vérifiez l' identifiant du citoyen 2 ");
+}else {
+ 
 if(x.estMarie() == true) {			
 	System.out.println(x.nom+" "+x.prenom+" est déjà marié.");
 	
 }else if(y.estMarie() == true) {
 		System.out.println(y.nom+" "+y.prenom+" est déjà marié.");
+}else if(x.ageLegal(18) == false) {	
+			System.out.println(x.nom+" "+x.prenom+" n'est pas majeur, le mariage est impossible.");
+	
+}else if(y.ageLegal(18) == false) {
+			System.out.println(y.nom+" "+y.prenom+" n'est pas majeur, le mariage est impossible.");
 
 }else{
 	
@@ -154,10 +175,16 @@ if(x.estMarie() == true) {
 	System.out.println("Le nom de famille choisi est " +x.nomUsage);
 	System.out.println(x.nomUsage +" "+ x.prenom+" et " +y.nomUsage+" "+y.prenom+" sont maintenant mariés.");
 	
-}}
+}}}
 
 
-public static void Divorcer(Personne x, Personne y,Date date) {
+
+
+public static void Divorcer() {
+	Personne x = registre.trouverPersonne(registre.listPersonne);
+	Personne y = registre.trouverPersonne(registre.listPersonne);
+  	Date dateDivorce = new Date("14/05/2021");
+	
 	
 	if(x.numeroId==y.numeroId) { 
 		System.out.println("il s'agit de la même personne, vérifiez les identifiants");
@@ -169,10 +196,10 @@ public static void Divorcer(Personne x, Personne y,Date date) {
 	}
 	int i = x.mariage.size()-1;
    	if (x.mariage.get(i).personne2 == y) {			
-   		x.mariage.get(i).setDivorce(x, y,date);
+   		x.mariage.get(i).setDivorce(x, y,dateDivorce);
 		i = y.mariage.size()-1;
-		y.mariage.get(i).setDivorce(x,y,date);
-		divorce.listDivorce.add((new Divorce(x,y,date)));
+		y.mariage.get(i).setDivorce(x,y,dateDivorce);
+		divorce.listDivorce.add((new Divorce(x,y,dateDivorce)));
 		repriseNomInitial(x,y);				
 		System.out.println(x.nom +" "+ x.prenom+" et " +x.nom +" "+ x.prenom+" sont maintenant divorcés.");
 		
@@ -181,10 +208,8 @@ public static void Divorcer(Personne x, Personne y,Date date) {
 		
    	}
 	}
+
 	
-
-
-
 
 public static void repriseNomInitial(Personne x, Personne y) { 
 	if(x.nomUsage == y.nom) {			
@@ -194,14 +219,45 @@ public static void repriseNomInitial(Personne x, Personne y) {
 		}
 	}
 	
-public static void declarerDeces(Personne x, Date date) {
-	deces.listDeces.add((new Deces(x,date)));
-	System.out.println("Le décès de "+x.nom+" est déclaré");
+public static void declarerDeces() {
+	Personne x = registre.trouverPersonne(registre.listPersonne);
+	if (x==null) {
+		System.out.println("Vérifiez l' identifiant du citoyen ");
+	}else {
+	System.out.println("Entrez la date de divorce (jj/mm/aaaa) :");
+	String d = clav.nextLine();
+  	Date dateDeces = new Date("14/05/2021");
+	deces.listDeces.add((new Deces(x,dateDeces)));
+	registre.listPersonne.remove(x);
+	x.setDeces(new Deces(x,dateDeces));
+	System.out.println("Le citoyen "+x.nom+" "+x.prenom+" a été enregistré décédé le "+x.decede.dateDeces);
+	int i = x.mariage.size()-1;
+	if (x.estMarie()==true){						
+		i = x.mariage.size()-1;
+		Personne veuf = x.mariage.get(i).personne2;
+		if(veuf.nomUsage == x.nom) {				
+			veuf.changeName(veuf,veuf.nom);			
+			System.out.println("Le conjoint de "+x.nom+" "+x.prenom+" a repris son nom de naissance.");
+			if(veuf.estVeuf()==true) {				
+				System.out.println("Le statut du conjoint "+veuf.nom+" "+veuf.prenom+" a bien été modifié.");
+			}
+		}
+	 }
+	}
+}	
+public static void afficherActeDeNaissance() {
+	Personne x = registre.trouverPersonne(registre.listPersonne);
+	if (x==null) {
+		System.out.println("Vérifiez l' identifiant du citoyen ");
+	}else {
+	System.out.println("Acte de naissance n° : " +x.numeroId);
+	x.affichage();
+	}
 }
-public static void afficherActeDeNaissance(Personne x) {
-   x.affichage();
+
 }
- }
+
+
 
 
   
